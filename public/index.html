@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
-    <!--
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <!--
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -21,28 +22,70 @@
     -->
 
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="format-detection" content="telephone=no">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Appelflap">
-    <meta name="application-name" content="Appelflap">
-    <title>Appelflap</title>
-  </head>
-  <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="format-detection" content="telephone=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Appelflap">
+  <meta name="application-name" content="Appelflap">
+  <title>Appelflap</title>
+</head>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+
+
+
+  
+
+
+    <div class="c-landing">
+        <div class="container-fluid">
+          spinner!
+        </div>
+    </div>
+    <div class="c-locationentry">
+        <div class="container-fluid">
+          
+      <form class="needs-validation" novalidate="">
+        <div class="row justify-content-center">
+          <div class="col-9 col-sm-5 col-md-4 col-lg-3 col-xl-2 ">
+            <div class="mb-3">
+              <label for="customlocation">City</label>
+              <input type="text" class="form-control" id="customlocation" placeholder="Enter your city" value="" required="">
+              <div class="invalid-feedback">
+                City is required.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="rememberme">
+                <label class="custom-control-label" for="rememberme">Remember location</label>
+              </div>
+            </div>
+
+            <div class="mb-3"> 
+              <button class="btn btn-primary btn-block" type="submit">Continue</button>
+            </div>
+
+          </div>
+        </div>
+      </form>
+    </div>
+    </div>
+    <div class="c-wheatherpane">
+        <div class="container-fluid">
+            lalala
+        </div>
+    </div>
+ 
+
+
+
+</body>
 </html>
