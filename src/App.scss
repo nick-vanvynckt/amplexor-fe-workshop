@@ -1,38 +1,8 @@
 @import "scss/bootstrap.scss";
 
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-
+#root {padding: 15vh 0; }
 .c-temp {font-size: 2em}
 .c-temp__val {font-size: 2em}
-
 
 /*  icons  --------------------
 ------------------------------- */ 
@@ -61,7 +31,7 @@
 
 .c-wheathersvg__elem{
   opacity: 0;
-  transition: all 2.5s ease-in;
+  transition: all 0.3s ease-in;
   transform: scale(0.5) translate(0%, 0%); 
   transform-origin: center center; 
 }
@@ -89,20 +59,23 @@
 .c-wheathersvg.cloudy #cloud{  opacity: 1; transform: scale(1);  }
 .c-wheathersvg.cloudy #cloud2 {  opacity: 0.8; transform: scale(0.8) translateX(20%);  }
 
-// 3 suncloud
-.c-wheathersvg.suncloud #sun{  opacity: 1; transform: scale(0.7) translate(30%, -26%); animation: none }
-.c-wheathersvg.suncloud #cloud{  opacity: 1; transform: scale(1);  }
-.c-wheathersvg.suncloud #cloud2 {  opacity: 0.8; transform: scale(0.8) translateX(25%);  }
+// 3 suncloudy
+.c-wheathersvg.suncloudy #sun{  opacity: 1; transform: scale(0.7) translate(30%, -26%); animation: none }
+.c-wheathersvg.suncloudy #cloud{  opacity: 1; transform: scale(1);  }
+.c-wheathersvg.suncloudy #cloud2 {  opacity: 0.8; transform: scale(0.8) translateX(25%);  }
 
 // 4 hail
+.haily {}
 
 // 5 thunder
 .thundery {}
 
 // 6 rain 
+.rainy {}
 
 // 7 fog
 .c-wheathersvg.foggy #fogs {  opacity: 1; transform: scale(1);  }
 
 
 // 8 snow 
+.snowy {}

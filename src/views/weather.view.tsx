@@ -4,11 +4,13 @@ import { WeatherService } from '../services/WeatherService';
 
 interface IProps {
     location: string;
+    navigateToSearch: () => void;
 }
 
 interface IState {
     currentWeather: IForecast;
     shouldRender: boolean;
+    location: string;
 }
 export class WeatherView extends React.Component<IProps, IState> {
 
@@ -51,12 +53,16 @@ export class WeatherView extends React.Component<IProps, IState> {
                 windDirection: "",
                 windSpeed: "",
             },
+            location: "",
             shouldRender: false,
         };
     }
 
     public componentDidMount() {
         this.weatherService.getWeather().subscribe((weatherData) => {
+            this.setState({
+                location: weatherData.hourlyForecasts.forecastLocation.city,
+            })
             weatherData.hourlyForecasts.forecastLocation.forecast.map((forecast: IForecast) => {
                 const forecastDate = new Date(forecast.utcTime);
                 const now = new Date();
@@ -72,7 +78,6 @@ export class WeatherView extends React.Component<IProps, IState> {
     }
 
     public render() {
-        const date = new Date(this.state.currentWeather.utcTime);
         return (
             <React.Fragment>
                 {
@@ -94,13 +99,14 @@ export class WeatherView extends React.Component<IProps, IState> {
                                     </div>
                                 </div>
                                 <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3  ">
-                                    <SVGComponent weatherClassName={"sunny"} />
+                                    <SVGComponent weatherClassName={this.state.currentWeather.iconName} />
                                 </div>
                             </div>
                             <div className="row justify-content-center">
                                 <div className="col-6 col-sm-6 col-md-5 col-lg-4 col-xl-4 text-center">
-                                    <div className="c-date">
-                                        Today at {date.getHours() + ":" + ( date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes() )}
+                                    <div className="text-warning">
+                                        {/* tslint:disable-next-line:jsx-no-lambda */}
+                                        Location: <button onClick={() => this.props.navigateToSearch()} className="btn btn-outline-warning ml-2">{this.state.location}</button>
                                 </div>
                                 </div>
                             </div>

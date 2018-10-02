@@ -5,6 +5,8 @@ import { LandingView } from './views/landing.view';
 import { LocationView } from './views/location.view';
 import { WeatherView } from './views/weather.view';
 
+import { NavigationComponent } from './components/nav.component';
+
 interface IState {
     currentView: string;
     position: any;
@@ -35,9 +37,16 @@ export default class App extends React.Component<any, IState> {
                     position
                 });
             }, (error) => {
-                this.setState({
-                    currentView: Views.LOCATION,
-                });
+                if (localStorage.getItem('location')) {
+                    this.setState({
+                        currentView: Views.WEATHER,
+                        position: localStorage.getItem('location'),
+                    })
+                } else {
+                    this.setState({
+                        currentView: Views.LOCATION,
+                    });
+                }
             });
         } else {
             this.setState({
@@ -53,6 +62,12 @@ export default class App extends React.Component<any, IState> {
         })
     }
 
+    public navigateToSearch() {
+        this.setState({
+            currentView: Views.LOCATION,
+        });
+    }
+
     public render() {
         return (
             <React.Fragment>
@@ -63,9 +78,11 @@ export default class App extends React.Component<any, IState> {
                             return this.setLocation(input);
                         }}/>
                     : this.state.currentView === Views.WEATHER ?
-                        <WeatherView location={this.state.position}/>
+                        // tslint:disable-next-line:jsx-no-lambda
+                        <WeatherView navigateToSearch={() => this.navigateToSearch()} location={this.state.position}/>
                     : <LandingView />
                 }
+                <NavigationComponent />
             </React.Fragment>
         );
     }
