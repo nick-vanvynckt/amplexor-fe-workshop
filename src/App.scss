@@ -1,7 +1,5 @@
 @import "scss/bootstrap.scss";
 
-
-
 .App {
   text-align: center;
 }
@@ -30,3 +28,81 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+.c-temp {font-size: 2em}
+.c-temp__val {font-size: 2em}
+
+
+/*  icons  --------------------
+------------------------------- */ 
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes fadeinout5 {
+  0% {opacity:0.5; }
+  50% { opacity:1; }
+  100% {opacity:0.5; }
+}
+@keyframes horizontaldance10 {
+  0% {transform: translateX(-10%); }
+  50% { transform: translateX(10%); }
+  100% {transform: translateX(-10%); }
+}
+@keyframes horizontaldanceCloud2 {
+  0% {transform: scale(0.8) translateX(25%); }
+  50% { transform:scale(0.8) translateX(10%); }
+  100% {transform: scale(0.8) translateX(25%); }
+}
+
+.c-wheathersvg{ width: 100%; }
+
+.c-wheathersvg__elem{
+  opacity: 0;
+  transition: all 2.5s ease-in;
+  transform: scale(0.5) translate(0%, 0%); 
+  transform-origin: center center; 
+}
+
+
+//elements
+.c-wheathersvg__elem#sun{fill : $yellow; transform: scale(1) translate(0%, 0%);  animation: spin 20s linear infinite;    }
+.c-wheathersvg__elem .sunline{ animation: 4s fadeinout5  linear infinite;}
+.c-wheathersvg__elem .sunline:nth-child(-n+5) { animation: 4s fadeinout5 2s linear infinite;}
+
+.c-wheathersvg__elem#cloud{fill : $white; animation: 10s horizontaldance10  linear infinite;}
+.c-wheathersvg__elem#cloud2{fill : $white; animation: 20s horizontaldanceCloud2  linear infinite;}
+
+.c-wheathersvg__elem#fogs { fill : $white;   }
+.c-wheathersvg__elem #fog1 {  animation: 10s fadeinout5  linear infinite;  }
+.c-wheathersvg__elem #fog2 {  animation: 10s fadeinout5  linear infinite;  }
+.c-wheathersvg__elem #fog3 {  animation: 10s fadeinout5 1s linear infinite;  }
+
+
+// states
+// 1 sunny 
+.c-wheathersvg.sunny #sun{  opacity: 1; transform: scale(1);  }
+
+// 2 cloudy
+.c-wheathersvg.cloudy #cloud{  opacity: 1; transform: scale(1);  }
+.c-wheathersvg.cloudy #cloud2 {  opacity: 0.8; transform: scale(0.8) translateX(20%);  }
+
+// 3 suncloud
+.c-wheathersvg.suncloud #sun{  opacity: 1; transform: scale(0.7) translate(30%, -26%); animation: none }
+.c-wheathersvg.suncloud #cloud{  opacity: 1; transform: scale(1);  }
+.c-wheathersvg.suncloud #cloud2 {  opacity: 0.8; transform: scale(0.8) translateX(25%);  }
+
+// 4 hail
+
+// 5 thunder
+.thundery {}
+
+// 6 rain 
+
+// 7 fog
+.c-wheathersvg.foggy #fogs {  opacity: 1; transform: scale(1);  }
+
+
+// 8 snow 
