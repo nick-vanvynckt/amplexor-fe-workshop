@@ -1,9 +1,14 @@
 @import "scss/bootstrap.scss";
 
+/*  variouspage elementens ----
+------------------------------- */ 
+
 #root {padding: 15vh 0; }
 .c-temp {font-size: 2em}
 .c-temp__val {font-size: 2em}
 .c-date {text-transform: uppercase;font-size: 1.2em;color: #16012a; font-weight:bold; }
+
+
 
 /*  icons  --------------------
 ------------------------------- */ 
@@ -28,6 +33,23 @@
   100% {transform: scale(0.8) translateX(25%); }
 }
 
+@keyframes raindrop1 {
+  0% {opacity: 1;  transform: scale(0.7) translate(0%, -20%); }
+  50% {opacity: 1;  transform: scale(0.7) translate(0%, 20%); }
+  100% {opacity: 0;  transform: scale(0.7) translate(0%, 35%);  }
+}
+@keyframes raindrop2 {
+  0% {opacity: 1;  transform: scale(0.7) translate(20%, -20%); }
+  50% {opacity: 1;  transform: scale(0.7) translate(20%, 20%); }
+  100% {opacity: 0;  transform: scale(0.7) translate(20%, 35%);  }
+}
+@keyframes raindrop3 {
+  0% {opacity: 1;  transform: scale(0.7) translate(40%, -20%); }
+  50% {opacity: 1;  transform: scale(0.7) translate(40%, 20%); }
+  100% {opacity: 0;  transform: scale(0.7) translate(40%, 35%);  }
+}
+
+
 .c-wheathersvg{ width: 100%; }
 
 .c-wheathersvg__elem{
@@ -39,6 +61,7 @@
 
 
 //elements
+// --------------
 .c-wheathersvg__elem#sun{fill : $yellow; transform: scale(1) translate(0%, 0%);  animation: spin 20s linear infinite;    }
 .c-wheathersvg__elem .sunline{ animation: 4s fadeinout5  linear infinite;}
 .c-wheathersvg__elem .sunline:nth-child(-n+5) { animation: 4s fadeinout5 2s linear infinite;}
@@ -51,8 +74,13 @@
 .c-wheathersvg__elem #fog2 {  animation: 10s fadeinout5  linear infinite;  }
 .c-wheathersvg__elem #fog3 {  animation: 10s fadeinout5 1s linear infinite;  }
 
+.c-wheathersvg__elem#grease-lightning, .c-wheathersvg__elem#grease-lightning2 { fill :  $yellow;  }
+
+
 
 // states
+// ------------------
+
 // 1 sunny 
 .c-wheathersvg.sunny #sun{  opacity: 1; transform: scale(1);  }
 
@@ -69,10 +97,17 @@
 .haily {}
 
 // 5 thunder
-.thundery {}
+.c-wheathersvg.thundery #cloud{  opacity: 1; transform: scale(1);  animation:none }
+.c-wheathersvg.thundery #grease-lightning { opacity: 1; transform: scale(1) translate(5%, 0%); }
+.c-wheathersvg.thundery #grease-lightning2 { opacity: 1; transform: scale(0.8) translate(20%, 3%);}
+
 
 // 6 rain 
-.rainy {}
+.c-wheathersvg.rainy #cloud{  opacity: 1; transform: scale(1);  animation:none }
+.c-wheathersvg.rainy .c-wheathersvg__elem .shadowdrop { fill : $white;  opacity: 1;  transform: scale(1) translate(0%, 0%); }
+.c-wheathersvg.rainy .c-wheathersvg__elem.drops1 {  fill : $white; animation: 0.7s raindrop1 0s linear infinite;   }
+.c-wheathersvg.rainy .c-wheathersvg__elem.drops2 {  fill : $white; animation: 0.7s raindrop2 0.1s linear infinite;  }
+.c-wheathersvg.rainy .c-wheathersvg__elem.drops3 {  fill : $white; animation: 0.7s raindrop3 0.2s linear infinite;  }
 
 // 7 fog
 .c-wheathersvg.foggy #fogs {  opacity: 1; transform: scale(1);  }
