@@ -4,7 +4,7 @@ interface IBaseParams {
 } 
 
 interface IWeatherParams extends IBaseParams {
-    jsoncallback: string;
+    jsoncallback?: string;
     product: string;
     name: string;
     oneobservation: boolean;
