@@ -1,13 +1,13 @@
 import * as React from 'react';
 import './App.css';
 
-import { WeatherService } from './services/WeatherService';
 import { LandingView } from './views/landing.view';
 import { LocationView } from './views/location.view';
 import { WeatherView } from './views/weather.view';
 
 interface IState {
     currentView: string;
+    position: any;
 }
 
 enum Views {
@@ -18,33 +18,21 @@ enum Views {
 
 export default class App extends React.Component<any, IState> {
 
-    private weatherService: WeatherService;
-
     constructor(props: any) {
         super(props);
         this.state = {
-            currentView: Views.LANDING
+            currentView: Views.LANDING,
+            position: undefined,
         }
-        this.weatherService = new WeatherService();
         this.checkBrowserLocation();
-    }
-
-    public componentDidMount() {
-        this.weatherService.getWeather().subscribe((weatherData) => {
-            weatherData.hourlyForecasts.forecastLocation.forecast.map((forecast: IForecast) => {
-                // tslint:disable-next-line:no-console
-                console.log(forecast.iconName);
-            });
-        });
     }
 
     public checkBrowserLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
-                // tslint:disable-next-line:no-console
-                console.log(position);
                 this.setState({
                     currentView: Views.WEATHER,
+                    position
                 });
             }, (error) => {
                 this.setState({
@@ -58,14 +46,24 @@ export default class App extends React.Component<any, IState> {
         }
     }
 
+    public setLocation(input: string) {
+        this.setState({
+            currentView: Views.WEATHER,
+            position: input,
+        })
+    }
+
     public render() {
         return (
             <React.Fragment>
                 {
                     this.state.currentView === Views.LOCATION ?
-                        <LocationView />
+                        // tslint:disable-next-line:jsx-no-lambda
+                        <LocationView onSubmit={(input: string) => {
+                            return this.setLocation(input);
+                        }}/>
                     : this.state.currentView === Views.WEATHER ?
-                        <WeatherView />
+                        <WeatherView location={this.state.position}/>
                     : <LandingView />
                 }
             </React.Fragment>

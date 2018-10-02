@@ -6,6 +6,8 @@ interface IBaseParams {
 interface IWeatherParams extends IBaseParams {
     jsoncallback?: string;
     product: string;
-    name: string;
+    name?: string;
+    latitude?: string;
+    longitude?: string;
     oneobservation: boolean;
 }

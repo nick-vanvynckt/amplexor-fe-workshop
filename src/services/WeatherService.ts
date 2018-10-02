@@ -23,18 +23,26 @@ export class WeatherService {
         return this.currentWeather;
     }
 
-    private getCurrentWeather(location?: string) {
+    public getCurrentWeather(location?: any) {
         const params: IWeatherParams = {
             app_code: this.appCode,
             app_id: this.appId,
-            name: location ? location : "Lenggries",
             oneobservation: true,
             product: "forecast_hourly",
         }
 
-        this.dataService.get(Endpoints.WEATHER, params).then((response) => {
-            const weatherData = response.data as IRootObject;
-            this.currentWeather.next(weatherData);
-        });
+        if (location && location.coords) {
+            params.latitude = location.coords.latitude;
+            params.longitude = location.coords.longitude;
+        } else {
+            params.name = location;
+        }
+
+        if (params.name || (params.latitude && params.longitude)) {
+            this.dataService.get(Endpoints.WEATHER, params).then((response) => {
+                const weatherData = response.data as IRootObject;
+                this.currentWeather.next(weatherData);
+            });
+        }
     }
 }
