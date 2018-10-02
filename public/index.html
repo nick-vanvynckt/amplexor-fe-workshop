@@ -94,7 +94,7 @@
             </span>
           </div>
           <div class="c-minmax text-center">
-             min: 6&ordm; - max: 20&ordm;
+             Something else 
           </div>
 
 
@@ -103,7 +103,7 @@
 
           <div class="c-icon">
             <?xml version="1.0" encoding="utf-8"?>
-            <svg class="c-wheathersvg cloudy" version="1.1" id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            <svg class="c-wheathersvg thundery" version="1.1" id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
               x="0px" y="0px" viewBox="0 0 400 400" style="enable-background:new 0 0 400 400;" xml:space="preserve">
 
               <g class="c-wheathersvg__elem" id="sun">
@@ -126,12 +126,23 @@
                   C244.7,144.2,255.8,155.3,262.9,148.2L262.9,148.2z" />
               </g>
 
-              <path class="c-wheathersvg__elem" id="drop" d="M137.3,320.8c0,13.4-10.8,24.2-24.2,24.2s-24.2-10.8-24.2-24.2c0-13.4,24.2-47.7,24.2-47.7
-    S137.3,307.4,137.3,320.8z" />
+              <symbol class="" id="drops">
+                  <path class="shadowdrop" d="M137.3,320.8c0,13.4-10.8,24.2-24.2,24.2s-24.2-10.8-24.2-24.2c0-13.4,24.2-47.7,24.2-47.7
+                  S137.3,307.4,137.3,320.8z" />
+              </symbol>
+              <use xlink:href="#drops" class="c-wheathersvg__elem drops1" />
+              <use xlink:href="#drops" class="c-wheathersvg__elem drops2" />
+              <use xlink:href="#drops" class="c-wheathersvg__elem drops3" />
+
+              <circle class="c-wheathersvg__elem" id="hail" cx="113.1" cy="335.1" r="7.2" />
+
               <path class="c-wheathersvg__elem" id="grease-lightning" d="M136.7,311.6c-6.9,0-13.8,0-20.7,0c4.8-10.9,9.6-21.8,14.4-32.7c4-9.2-9.5-17.2-13.6-7.9
     c-6.5,14.8-13.1,29.7-19.6,44.5c-2.3,5.3,0.3,11.8,6.8,11.8c6.9,0,13.9,0,20.8,0c-8.3,19.2-16.6,38.4-25,57.5
     c-4,9.2,9.5,17.2,13.6,7.9c10-23.1,20.1-46.2,30.1-69.4C145.7,318.1,143.1,311.6,136.7,311.6z" />
-              <circle class="c-wheathersvg__elem" id="hail" cx="113.1" cy="335.1" r="7.2" />
+              <path class="c-wheathersvg__elem" id="grease-lightning2" d="M136.7,311.6c-6.9,0-13.8,0-20.7,0c4.8-10.9,9.6-21.8,14.4-32.7c4-9.2-9.5-17.2-13.6-7.9
+    c-6.5,14.8-13.1,29.7-19.6,44.5c-2.3,5.3,0.3,11.8,6.8,11.8c6.9,0,13.9,0,20.8,0c-8.3,19.2-16.6,38.4-25,57.5
+    c-4,9.2,9.5,17.2,13.6,7.9c10-23.1,20.1-46.2,30.1-69.4C145.7,318.1,143.1,311.6,136.7,311.6z" />
+              
               <g class="c-wheathersvg__elem" id="fogs">
                 <g id="fog3">
                   <g>
