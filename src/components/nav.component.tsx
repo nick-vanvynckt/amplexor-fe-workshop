@@ -4,9 +4,9 @@ export class NavigationComponent extends React.Component<any, any> {
     public render() {
         return (
             <nav className="navbar bg-dark fixed-bottom justify-content-center">
-                <ul className="nav ">
+                <ul className="nav">
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Today at 17:00</a>
+                        <a className="nav-link" href="#">Now</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="#">In 4 hours</a>

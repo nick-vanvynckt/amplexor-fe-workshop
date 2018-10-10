@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { SVGComponent } from '../components/svg.sfc.component';
+import { IconHelper } from '../helpers/icon.helper';
 import { WeatherService } from '../services/WeatherService';
 
 interface IProps {
@@ -13,7 +14,7 @@ interface IState {
     location: string;
 }
 export class WeatherView extends React.Component<IProps, IState> {
-
+    private iconHelper: IconHelper;
     private weatherService: WeatherService;
 
     constructor(props: IProps) {
@@ -21,6 +22,7 @@ export class WeatherView extends React.Component<IProps, IState> {
 
         this.weatherService = new WeatherService();
         this.weatherService.getCurrentWeather(props.location);
+        this.iconHelper = new IconHelper();
 
         this.state = {
             currentWeather: {
@@ -78,6 +80,7 @@ export class WeatherView extends React.Component<IProps, IState> {
     }
 
     public render() {
+        const weatherClassName = this.iconHelper.mapStringToClass(this.state.currentWeather.iconName);
         return (
             <React.Fragment>
                 {
@@ -99,7 +102,7 @@ export class WeatherView extends React.Component<IProps, IState> {
                                     </div>
                                 </div>
                                 <div className="col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3  ">
-                                    <SVGComponent weatherClassName={this.state.currentWeather.iconName} />
+                                    <SVGComponent weatherClassName={weatherClassName} />
                                 </div>
                             </div>
                             <div className="row justify-content-center">
